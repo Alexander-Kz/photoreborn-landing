@@ -1,0 +1,67 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install sshpass
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y sshpass
+        
+    - name: Add server to known hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H <SERVER_IP> >> ~/.ssh/known_hosts
+        
+    - name: Deploy to server
+      run: |
+        sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@<SERVER_IP> << 'EOF'
+          # Navigate to website directory
+          cd /var/www/photoreborn
+          
+          # Fix git ownership issue
+          git config --global --add safe.directory /var/www/photoreborn
+          
+          # Pull latest changes
+          git fetch origin main
+          git reset --hard origin/main
+          
+          # Set proper permissions
+          chown -R www-data:www-data /var/www/photoreborn
+          chmod -R 755 /var/www/photoreborn
+          
+          # Reload nginx to pick up any changes
+          systemctl reload nginx
+          
+          echo "✅ Deployment completed successfully!"
+        EOF
+        
+    - name: Verify deployment
+      run: |
+        # Health check for main domain
+        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://photoreborn.online/)
+        if [[ "$HTTP_CODE" == "200" ]]; then
+          echo "✅ Main website (photoreborn.online) is accessible (HTTP $HTTP_CODE)"
+        else
+          echo "❌ Website check failed (HTTP $HTTP_CODE)"
+          exit 1
+        fi
+        
+        # Check redirect from .ru domain (optional, won't fail the build)
+        echo "Checking redirect from photoreborn.ru..."
+        REDIRECT_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://photoreborn.ru/ || echo "000")
+        if [[ "$REDIRECT_CODE" == "301" ]] || [[ "$REDIRECT_CODE" == "302" ]]; then
+          echo "✅ Domain redirect (photoreborn.ru -> photoreborn.online) works correctly (HTTP $REDIRECT_CODE)"
+        else
+          echo "⚠️  Domain redirect check returned HTTP $REDIRECT_CODE (non-critical)"
+        fi

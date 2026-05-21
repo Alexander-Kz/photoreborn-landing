@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>PhotoReborn AI — Оживите ваши воспоминания с помощью ИИ</title>
+    <meta name="description" content="Восстанавливайте и оживляйте старые семейные фотографии за секунды с помощью нашего Telegram-бота на базе искусственного интеллекта.">
+    
+    <meta name="theme-color" content="#1b0c2d">
+    <meta name="color-scheme" content="dark only">
+    <meta name="supported-color-schemes" content="dark">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104437325', 'ym');
+
+        ym(104437325, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/104437325" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/PhotoRebornAI_promo_v3.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="preloader" id="preloader">
+        <img src="assets/logo.svg" alt="PhotoReborn AI Logo" class="preloader__logo">
+    </div>
+
+    <header class="header">
+        <div class="header__content">
+            <a href="#" class="header__logo">
+                <img src="assets/logo.svg" alt="PhotoReborn AI Logo">
+                <span>PhotoReborn AI</span>
+            </a>
+            <button class="header__menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+                <span class="header__menu-icon"></span>
+            </button>
+            <nav class="header__nav" id="nav-menu">
+                <a href="#features">Возможности</a>
+                <a href="#examples">Примеры работ</a>
+                <a href="#how-it-works">Как это работает</a>
+                <a href="https://t.me/PhotoReborn_bot?utm_source=landing&utm_medium=button&utm_campaign=photoreborn_launch" target="_blank" class="cta-button header__cta--mobile">Восстановить фото</a>
+            </nav>
+            <a href="https://t.me/PhotoReborn_bot?utm_source=landing&utm_medium=button&utm_campaign=photoreborn_launch" target="_blank" class="cta-button header__cta">Восстановить фото</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title animate-on-scroll">Верните жизнь <span class="text-accent-primary">семейным фотографиям</span> за <span class="text-accent">секунды</span> с помощью ИИ</h1>
+                    <p class="hero-subtitle animate-on-scroll">Превратите выцветшие и повреждённые снимки в <span class="text-accent">яркие чёткие цветные</span> фотографии. Создавайте <span class="text-accent">живые видео</span>. Улучшайте качество для <span class="text-accent">печати больших форматов</span>.</p>
+                    <div class="hero-cta-group animate-on-scroll">
+                        <a href="https://t.me/PhotoReborn_bot?utm_source=landing&utm_medium=button&utm_campaign=photoreborn_launch" target="_blank" class="cta-button cta-button--primary">Восстановить фото</a>
+                        <a href="#examples" class="cta-button cta-button--secondary">Примеры работ</a>
+                    </div>
+                    <p class="telegram-inline-note animate-on-scroll" data-telegram-handle>
+                        <span class="telegram-inline-note__icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0Z" fill="url(#telegram-note-gradient-hero)"/>
+                                <path d="M5.411 11.552C9.027 9.991 11.434 8.98 12.634 8.52C16.072 7.2 16.79 6.969 17.255 6.96C17.358 6.958 17.587 6.985 17.736 7.105C17.863 7.206 17.897 7.346 17.915 7.443C17.932 7.539 17.953 7.762 17.935 7.94C17.74 9.996 16.898 14.718 16.47 16.927C16.291 17.861 15.945 18.174 15.614 18.204C14.896 18.271 14.352 17.734 13.658 17.281C12.573 16.567 11.96 16.122 10.906 15.424C9.685 14.616 10.476 14.177 11.175 13.456C11.358 13.269 14.526 10.39 14.586 10.12C14.593 10.087 14.6 9.963 14.526 9.896C14.452 9.829 14.342 9.851 14.263 9.867C14.151 9.891 12.43 11.04 9.099 13.314C8.611 13.65 8.168 13.813 7.771 13.803C7.334 13.792 6.488 13.553 5.859 13.347C5.074 13.09 4.478 12.953 4.53 12.519C4.557 12.288 4.873 12.05 5.411 11.552Z" fill="#ffffff"/>
+                                <defs>
+                                    <linearGradient id="telegram-note-gradient-hero" x1="4.99" y1="19.01" x2="19.01" y2="4.99" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#37AEE2"/>
+                                        <stop offset="1" stop-color="#1E96C8"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </span>
+                        <span class="telegram-inline-note__text">Введите в Telegram: <span class="telegram-inline-note__handle" aria-label="Наш бот в Telegram">@PhotoReborn_bot</span></span>
+                    </p>
+                </div>
+                <div class="hero-video-container animate-on-scroll">
+                    <div class="hero-video-wrapper">
+                        <video class="hero-video" 
+                               autoplay 
+                               muted 
+                               loop 
+                               playsinline 
+                               preload="metadata"
+                               webkit-playsinline
+                               poster="assets/video/hero-poster.jpg"
+                               data-light-webm="assets/video/hero-video-light.webm"
+                               data-light-mp4="assets/video/hero-video-light.mp4"
+                               data-hd-webm="assets/video/hero-video-hd.webm"
+                               data-hd-mp4="assets/video/hero-video-hd.mp4">
+                            <!-- Fallback для нативной поддержки -->
+                            <source src="assets/video/hero-video-light.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                    </div>
+                    <div class="glow-effect"></div>
+                </div>
+            </div>
+            
+            <!-- Анимированная подсказка для прокрутки (мобильные устройства) -->
+            <div class="scroll-hint-arrow" id="scrollHint" aria-label="Прокрутите вниз для просмотра контента" role="button" tabindex="0"></div>
+        </section>
+        
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">✨ Магия <span class="text-accent-primary">искусственного интеллекта</span></h2>
+                <p class="section-subtitle animate-on-scroll">Смотрите, как алгоритмы творят настоящие чудеса с вашими фотографиями. То, что вчера казалось невозможным, сегодня помещается в Telegram-боте.</p>
+                
+                <div class="utp-badges animate-on-scroll">
+                    <span class="utp-badge">✅ Лучшее качество на рынке</span>
+                    <span class="utp-badge">✅ Лица без искажений</span>
+                    <span class="utp-badge">✅ Нейросети последнего поколения</span>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card animate-on-scroll">
+                        <div class="skeleton-placeholder" style="height: 48px; width: 48px; margin-bottom: var(--space-md); margin-inline: auto;"></div>
+                        <div class="feature-card__icon">📸</div>
+                        <h3 class="feature-card__title">Профессиональная реставрация</h3>
+                        <p class="feature-card__description">Искусственный интеллект <span class="text-accent">убирает царапины</span> и потёртости, <span class="text-accent">восстанавливает</span> выцветшие участки, раскрашивает чёрно-белые в яркие цветные. Каждое фото — как новое.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="skeleton-placeholder" style="height: 48px; width: 48px; margin-bottom: var(--space-md); margin-inline: auto;"></div>
+                        <div class="feature-card__icon">🎬</div>
+                        <h3 class="feature-card__title">Превращение в живое видео</h3>
+                        <p class="feature-card__description">Смотрите, как ваши близкие снова <span class="text-accent">улыбаются и оживают</span> на экране. ИИ создаёт естественные движения — моргание, лёгкие кивки, живые взгляды. Семейная история становится трогательным видео.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="skeleton-placeholder" style="height: 48px; width: 48px; margin-bottom: var(--space-md); margin-inline: auto;"></div>
+                        <div class="feature-card__icon">🖼️</div>
+                        <h3 class="feature-card__title">Увеличение качества в 4 раза</h3>
+                        <p class="feature-card__description">Делаем фото <span class="text-accent">чётким и детализированным</span> для печати больших размеров — постеров, рамок A3/A2, холстов. Идеально для подарков и оформления дома.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="skeleton-placeholder" style="height: 48px; width: 48px; margin-bottom: var(--space-md); margin-inline: auto;"></div>
+                        <div class="feature-card__icon">💝</div>
+                        <h3 class="feature-card__title">Трогательный подарок близким</h3>
+                        <p class="feature-card__description">Восстановите фотографии родителей или бабушек — они будут <span class="text-accent-primary">тронуты до слёз</span>. Идеально для дня рождения, юбилея или просто чтобы порадовать. Подарите не просто фото, а живые воспоминания.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="examples" class="comparison-gallery-section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Примеры работ нашего ИИ</h2>
+                <p class="section-subtitle animate-on-scroll">
+                    Перемещайте ползунок влево и вправо, чтобы увидеть <span class="text-accent">разницу</span> между оригиналом и восстановленной фотографией. Каждый пример — <span class="text-accent-primary">реальный результат</span> обработки нашим сервисом.
+                </p>
+                
+                <!-- Галерея превью для выбора примера (без задержки) -->
+                <div class="comparison-thumbnails">
+                    <button class="thumbnail-btn active" data-index="0" aria-label="Пример 1">
+                        <img src="assets/before_after/IMG_0380.jpg" alt="Пример 1" loading="lazy">
+                        <span class="thumbnail-overlay">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="thumbnail-btn" data-index="1" aria-label="Пример 2">
+                        <img src="assets/before_after/2.jpg" alt="Пример 2" loading="lazy">
+                        <span class="thumbnail-overlay">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="thumbnail-btn" data-index="2" aria-label="Пример 3">
+                        <img src="assets/before_after/IMG_0377.jpg" alt="Пример 3" loading="lazy">
+                        <span class="thumbnail-overlay">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="thumbnail-btn" data-index="3" aria-label="Пример 4">
+                        <img src="assets/before_after/IMG_0381.jpg" alt="Пример 4" loading="lazy">
+                        <span class="thumbnail-overlay">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="thumbnail-btn" data-index="4" aria-label="Пример 5">
+                        <img src="assets/before_after/IMG_0398.jpg" alt="Пример 5" loading="lazy">
+                        <span class="thumbnail-overlay">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="thumbnail-btn" data-index="5" aria-label="Пример 6">
+                        <img src="assets/before_after/IMG_0552.jpg" alt="Пример 6" loading="lazy">
+                        <span class="thumbnail-overlay">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="thumbnail-btn" data-index="6" aria-label="Пример 7">
+                        <img src="assets/before_after/IMG_0371.jpg" alt="Пример 7" loading="lazy">
+                        <span class="thumbnail-overlay">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="thumbnail-btn" data-index="7" aria-label="Пример 8">
+                        <img src="assets/before_after/IMG_0390.jpg" alt="Пример 8" loading="lazy">
+                        <span class="thumbnail-overlay">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                
+                <!-- Новый универсальный слайдер сравнения -->
+                <div class="comparison-container">
+                    <div class="comparison-wrapper">
+                        <img-comparison-slider id="modern-comparison-slider" class="comparison-slider-modern">
+                            <img slot="first" id="before-image" src="assets/before_after/IMG_0380.jpg" alt="До обработки" class="comparison-image">
+                            <img slot="second" id="after-image" src="assets/before_after/IMG_0380_restored.jpg" alt="После обработки" class="comparison-image">
+                        </img-comparison-slider>
+                        
+                        <!-- Анимация-подсказка для демонстрации -->
+                        <div class="comparison-tutorial-overlay" id="tutorial-overlay">
+                            <!-- Рука с указательным жестом -->
+                            <div class="tutorial-hand">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+                                    <path d="M173 100c8 6 13 16 18 24a1507 1507 0 0 0 42 74l2 5h2l1-2c3-8 9-14 17-18l2-1c9-4 21-3 30 0 7 3 13 8 18 14l1-2a40 40 0 0 1 58-16l13 14 1-2c7-10 14-16 25-20 12-2 23-2 33 5 13 10 20 28 27 43l1 2c18 41 32 85 31 130v3a180 180 0 0 1-4 39c-5 26-15 49-32 69l-1 2c-18 21-43 37-70 44l-3 1c-23 6-51 7-75 1l-2-1c-21-5-38-14-56-25l-16-9a1585 1585 0 0 1-51-30l-4-1-27-12c-10-4-19-8-24-18-5-11-5-22-1-33 6-13 15-21 29-26 15-6 32-1 48 3a2197 2197 0 0 0 32 9l-2-3-21-37-9-16-4-6-2-4-53-91a429320 429320 0 0 0-13-23l-2-3a6279 6279 0 0 1-12-22l-2-2-3-5c-6-10-8-22-5-34 3-10 10-19 19-24 15-7 31-5 44 4Zm-43 15c-5 6-6 11-6 18 1 9 6 16 10 24l2 3a2043 2043 0 0 0 33 57l10 16 3 7 2 3 23 39a107945 107945 0 0 0 29 51l7 12a2095 2095 0 0 0 15 25l2 3 1 9-4 4-12-2-2-1a1075 1075 0 0 1-40-11c-22-7-22-7-45-2-8 5-14 12-17 22 0 5 0 10 3 15 5 6 11 9 19 11a169 169 0 0 1 32 14 635 635 0 0 1 70 41c26 15 50 24 80 24h4c10 0 19-1 28-3h2c32-8 61-28 78-56 28-47 27-100 15-151-8-31-21-61-36-89l-2-3c-3-5-7-8-12-10-9-2-16-1-24 4-6 5-9 12-9 20 0 5 2 10 5 15l1 2 3 4c3 5 4 8 3 14l-6 3-4-1-3-4-1-2a899 899 0 0 1-22-38l-2-3c-4-7-9-10-16-12-8-1-14 1-20 5-6 5-9 12-10 20 1 7 4 13 8 20l2 3 9 15 1 3 4 6 1 2 2 3c2 3 2 6 1 10-3 3-4 2-8 3-5-2-7-7-9-11a1617 1617 0 0 1-27-47c-8-15-8-15-22-24-8-1-15 0-22 5-6 5-9 11-9 18 0 14 11 28 18 39l14 24 2 3 1 3 7 11c1 3 2 5 1 8l-4 4-7-1-6-9a22933 22933 0 0 0-101-176c-5-8-10-14-19-17-10-1-17 1-24 8Z"/>
+                                    <path d="m184 4 4 1c16 5 31 13 44 24l3 3a133 133 0 0 1 45 107v3c0 4-1 7-3 10-3 3-5 3-10 2l-3-3v-12c0-35-10-66-34-91a121 121 0 0 0-56-30c-19-4-40-4-59 2l-2 1c-15 4-28 12-40 22l-2 2c-22 18-35 46-38 73-2 35 7 65 30 92l2 2c11 12 25 20 39 27l4 3-1 10c-4 2-8 1-12 0l-8-4-2-1c-31-17-53-45-63-78-10-34-6-72 11-103 12-20 28-36 47-48l2-1c11-7 22-11 34-14l4-1c20-5 44-4 64 2Z"/>
+                                    <path d="M202 63c18 15 29 35 32 58 0 8 1 16-2 23-4 2-6 3-10 2-3-3-4-4-4-8v-3c0-20-7-39-20-54-8-7-17-12-27-16l-3-1c-17-5-36-2-52 5a71 71 0 0 0-28 98c8 12 18 21 30 27 3 2 5 4 6 7-1 4-1 5-4 8-5 2-8 0-12-2-8-4-15-10-21-16l-2-2a85 85 0 0 1 4-120l2-2c29-28 79-28 111-4Zm242 219c3 1 4 2 6 5l3 12 1 4c8 41 9 89-15 126-10 15-23 26-39 35l-2 1c-5 2-10 5-16 5-3-1-5-2-6-5-1-5-1-5 2-8s6-4 10-6c7-3 14-7 20-12l3-2c19-16 28-41 31-65v-2c3-24 0-47-5-70l-2-13c3-4 4-5 9-5Z"/>
+                            </div>
+                        </div>
+                        
+                        <!-- Индикатор загрузки -->
+                        <div class="comparison-loader" id="comparison-loader">
+                            <div class="loader-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works-section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Как это работает</h2>
+                <div class="steps-container">
+                    <div class="step-card animate-on-scroll">
+                        <div class="step-card__number">1</div>
+                        <h3 class="step-card__title">📧 Отправка</h3>
+                        <p class="step-card__description">Просто сфотографируйте старый снимок или отсканируйте — отправьте в наш Telegram бот.</p>
+                    </div>
+                    <div class="step-card animate-on-scroll">
+                        <div class="step-card__number">2</div>
+                        <h3 class="step-card__title">⚙️ Многоуровневая обработка</h3>
+                        <p class="step-card__description">Параллельно работают несколько специализированных алгоритмов: <span class="text-accent">удаление дефектов</span>, <span class="text-accent">повышение чёткости</span>, <span class="text-accent">колоризация</span> и при необходимости — генерация анимации.</p>
+                    </div>
+                    <div class="step-card animate-on-scroll">
+                        <div class="step-card__number">3</div>
+                        <h3 class="step-card__title">💎 Готово — скачивайте и делитесь</h3>
+                        <p class="step-card__description">Получите результат высокого качества <span class="text-accent-primary">за секунды</span>. Скачивайте восстановленное фото, создавайте видео, увеличивайте качество для печати — <span class="text-accent">всё в одном боте</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="final-cta-section">
+            <div class="container">
+                <div class="final-cta-card animate-on-scroll">
+                    <h2 class="final-cta-card__title">Готовы <span class="text-accent-primary">вернуть жизнь</span> вашим фотографиям?</h2>
+                    <p class="final-cta-card__description">Перейдите в наш Telegram-бот и превратите старые фотографии в яркие чёткие снимки <span class="text-accent-primary">прямо сейчас</span>. Сделайте трогательный подарок близким — <span class="text-accent">восстановите их воспоминания</span>. Никаких подписок — только магия ИИ.</p>
+                    <ul class="final-cta-card__features">
+                        <li><span class="icon">✅</span> Высокое качество</li>
+                        <li><span class="icon">⚡️</span> Результат за секунды</li>
+                        <li><span class="icon">🎁</span> Первое фото в подарок</li>
+                        <li><span class="icon">💝</span> Идеальный подарок близким</li>
+                    </ul>
+                    <a href="https://t.me/PhotoReborn_bot?utm_source=landing&utm_medium=button&utm_campaign=photoreborn_launch" target="_blank" class="cta-button cta-button--primary cta-button--large">Восстановить фото в Telegram</a>
+                    <p class="telegram-inline-note telegram-inline-note--center" data-telegram-handle>
+                        <span class="telegram-inline-note__icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0Z" fill="url(#telegram-note-gradient-footer)"/>
+                                <path d="M5.411 11.552C9.027 9.991 11.434 8.98 12.634 8.52C16.072 7.2 16.79 6.969 17.255 6.96C17.358 6.958 17.587 6.985 17.736 7.105C17.863 7.206 17.897 7.346 17.915 7.443C17.932 7.539 17.953 7.762 17.935 7.94C17.74 9.996 16.898 14.718 16.47 16.927C16.291 17.861 15.945 18.174 15.614 18.204C14.896 18.271 14.352 17.734 13.658 17.281C12.573 16.567 11.96 16.122 10.906 15.424C9.685 14.616 10.476 14.177 11.175 13.456C11.358 13.269 14.526 10.39 14.586 10.12C14.593 10.087 14.6 9.963 14.526 9.896C14.452 9.829 14.342 9.851 14.263 9.867C14.151 9.891 12.43 11.04 9.099 13.314C8.611 13.65 8.168 13.813 7.771 13.803C7.334 13.792 6.488 13.553 5.859 13.347C5.074 13.09 4.478 12.953 4.53 12.519C4.557 12.288 4.873 12.05 5.411 11.552Z" fill="#ffffff"/>
+                                <defs>
+                                    <linearGradient id="telegram-note-gradient-footer" x1="4.99" y1="19.01" x2="19.01" y2="4.99" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#37AEE2"/>
+                                        <stop offset="1" stop-color="#1E96C8"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </span>
+                        <span class="telegram-inline-note__text">Введите в Telegram: <span class="telegram-inline-note__handle" aria-label="Наш бот в Telegram">@PhotoReborn_bot</span></span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__container">
+            <div class="footer__grid">
+                <!-- Секция документов -->
+                <nav class="footer__section footer__section--links" aria-labelledby="footer-legal-heading">
+                    <h3 id="footer-legal-heading" class="footer__heading">Документы</h3>
+                    <ul class="footer__links">
+                        <li><a href="legal/offer.html">Оферта</a></li>
+                        <li><a href="legal/privacy-policy.html">Политика конфиденциальности</a></li>
+                        <li><a href="legal/pd-consent.html">Согласие на ПД</a></li>
+                        <li><a href="legal/marketing-consent.html">Согласие на рассылку</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Секция контактов -->
+                <div class="footer__section footer__section--contact">
+                    <a href="https://t.me/PhotoReborn" target="_blank" rel="noopener" class="footer__cta">
+                        <svg class="footer__cta-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16l-1.61 7.59c-.12.546-.437.679-.887.422l-2.456-1.81-1.184 1.14c-.131.131-.242.242-.497.242l.178-2.51L17.47 9.24c.16-.143-.035-.223-.249-.08L11.28 12.67l-2.43-.759c-.529-.165-.54-.529.11-.783l9.493-3.66c.439-.165.825.106.683.783z"/>
+                        </svg>
+                        <span>Связаться с нами</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Дисклеймер -->
+            <div class="footer__disclaimer">
+                <p>Используя PhotoReborn AI, вы соглашаетесь с <a href="legal/offer.html">офертой</a>, <a href="legal/privacy-policy.html">политикой конфиденциальности</a> и <a href="legal/pd-consent.html">обработкой персональных данных</a>.</p>
+            </div>
+
+            <!-- Копирайт -->
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 PhotoReborn AI. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- img-comparison-slider компонент (локально) -->
+    <script src="assets/libs/img-comparison-slider.js"></script>
+    <script src="assets/video/video-performance-monitor.js"></script>
+    <!-- UTM Tracker для сквозной аналитики -->
+    <script src="utm-tracker.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
